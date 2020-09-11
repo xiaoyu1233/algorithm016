@@ -59,3 +59,25 @@ class Solution:
         return water
 
 
+#栈方法
+class Solution():
+    def trap(self,height):
+        n = len(height)
+        #边界条件，小于3个柱子的时候是无法存水的
+        if n < 3: return 0
+        stack = []#准备构建递减栈
+        water = 0
+        i = 0
+        while i < n:
+            #看似双循环，但内层循环是用来做条件判断的
+            #只有当栈不为空，且出现上升趋势的时候才进入内循环
+            while stack and height[i] > height[stack[-1]]:
+                top = stack.pop()#pop栈顶值，要存水的低洼处。#pop加括号！别漏了！查这个bug查半天
+                if not stack: break#如果pop后，栈空了就跳出去，继续建栈，这种情况出现在开头两个递增的柱子
+                h = min(height[stack[-1]],height[i])-height[top]#高度是左右边界最小值减去低洼处的高度
+                dist = i-stack[-1]-1#确定左右边界的距离
+                water += h*dist#确定存水值
+            #构建递减栈
+            stack.append(i)
+            i = i+1
+        return water
