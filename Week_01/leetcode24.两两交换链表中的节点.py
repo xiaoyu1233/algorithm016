@@ -30,7 +30,7 @@ class Solution:
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
         dummy = ListNode(-1)
-        dummy.next = head
+        dummy.next = head   #dummy初始化，如果只有一个元素，无法进入循环，所以必须初始化。
 
         pre_node = dummy
 
