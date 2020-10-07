@@ -1,4 +1,6 @@
-#DP
+#二维DP
+#自底向上
+
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         dp = [[1] * n] + [[1] + [0] * (n - 1) for _ in range(m - 1)]
