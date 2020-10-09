@@ -1,0 +1,103 @@
+编程试题：求数列的和 
+
+使用语言：JAVA
+参考正解代码如下：
+
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        int m;
+        double sum,n;
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            n=sc.nextInt();
+            m=sc.nextInt();
+            sum=0;
+            for(int i=0;i<m;i++){
+                sum=sum+n;
+                n=Math.sqrt(n);
+            }
+            System.out.printf("%.2f",sum);
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+使用语言：C++
+参考正解代码如下：
+
+#include <math.h>
+#include <stdio.h>
+int main()
+{
+    int n;
+    double x, s;
+
+    while (~scanf("%lf%d", &x, &n))
+    {
+        for(s = 0.0; n--; x = sqrt(x))
+            s += x;
+        printf("%.2lf\n", s);
+    }   return 0;
+}
+
+
+
+
+使用语言：C#
+参考正解代码如下：
+
+using System;
+
+namespace myApp
+{
+    class Program
+    {
+        public static void Main()
+        {
+            string line;
+            string[] p;
+            int m, n;
+            double nn;
+            while (!string.IsNullOrEmpty(line = Console.ReadLine()))
+            {
+                p = line.Split(' ');
+                n = int.Parse(p[0]);
+                m = int.Parse(p[1]);
+                double sum = 0;
+                nn = n;
+                for (int i = 0; i < m; i++)
+                {
+                    sum = sum + nn;
+                    nn = Math.Sqrt(nn);
+                }
+                Console.WriteLine(string.Format("{0:f}", sum));
+            }
+        }
+    }
+}
+
+
+
+
+使用语言：JavaScript
+参考正解代码如下：
+
+var m;
+var sum,n;
+var sc
+
+while(sc = read_line()){
+	var arr = sc.split(' ');
+  n=parseInt(arr[0]);
+  m=parseInt(arr[1]);
+  sum=0;
+  for(var i=0;i<m;i++){
+      sum=sum+n;
+      n=Math.sqrt(n);
+  }
+  print(sum.toFixed(2));
+}

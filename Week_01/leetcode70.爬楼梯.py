@@ -39,5 +39,3 @@ class Solution:
             a,b = b, a+b
         return a
 
-while True:
-    print('祝老师节日快乐！')

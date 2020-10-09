@@ -12,7 +12,8 @@ class Solution:
 
 #迭代
 #这个写法太python了，优美！
-lass Solution:
+#新元素增加的新的组合，就是前面元素所有的组合再加上这个元素，再将新元素增加的组合融合进组合总体中，进入下一轮循环。
+class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res = [[]]
         for i in nums:
@@ -20,6 +21,26 @@ lass Solution:
         return res
 
 #回溯
+#套模板
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        if nums == []: return [[]]
+
+        def backtrack(idx):
+            # 不需要等一条路径回溯结束再保存值，每一步都要保存值。
+            ans.append(path[:])
+            for i in range(idx, len(nums)):
+                path.append(nums[i])
+                backtrack(i + 1)
+                path.pop()
+
+        path = []
+        res = []
+        backtrack(0)
+        return res
+
+#回溯的另一种写法，因为再回溯的时候将每一层的结果都传递下去了，相当于每一层重写赋值path，
+#因此不向回撤也可以，相当于自动回撤，这对于空间的占用较高。
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res = []

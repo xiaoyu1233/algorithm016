@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<annotation>
+<folder>纤维小图</folder>
+<filename>00001_S2V1_20190322085548_划伤_字符-----子划伤(长58-----子划伤(长56.5685宽31.1127面积1760)_1.bmp</filename>
+<path>C:\Users\HIAPAD\Desktop\纤维小图\00001_S2V1_20190322085548_划伤_字符-----子划伤(长58-----子划伤(长56.5685宽31.1127面积1760)_1.bmp</path>
+<source>
+    <database>Unknown</database>
+</source>
+<size>
+    <width>700</width>
+    <height>700</height>
+    <depth>3</depth>
+</size>
+
+<segmented>0</segmented>
+    <object>
+    <name>3</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+        <xmin>312</xmin>
+        <ymin>308</ymin>
+        <xmax>418</xmax>
+        <ymax>392</ymax>
+    </bndbox>
+</object>
+</annotation>

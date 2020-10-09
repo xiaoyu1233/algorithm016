@@ -11,3 +11,13 @@ class Solution:
         return self.reversePrint(head.next) + [head.val]
 
 #辅助栈
+class Solution:
+    def reversePrint(self, head: ListNode) -> List[int]:
+        stack = []
+
+        while head:
+            val = head.val
+
+            stack.append(val)
+            head = head.next
+        return stack[::-1]

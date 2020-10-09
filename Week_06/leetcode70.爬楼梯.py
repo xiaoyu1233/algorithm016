@@ -20,7 +20,7 @@ class Solution:
         #新数咱得存一下
         return self.memo[n]
 
-#数组+通项式
+#DP
 class Solution:
     def climbStairs(self, n: int) -> int:
         dp = [0]*(n+1)

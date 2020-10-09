@@ -1,22 +1,26 @@
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) == 0: return []
+
+        def backtrack(depth):
+            if depth == len(nums):
+                res.append(path[:])
+
+            for i in range(len(nums)):
+                if visited[i] == True:
+                    continue
+                if i > 0 and nums[i] == nums[i - 1] and visited[i - 1] == False:
+                    continue
+                visited[i] = True
+                path.append(nums[i])
+                backtrack(depth + 1)
+                visited[i] = False
+                path.pop()
+
         nums.sort()
-        self.res = []
-        check = [0 for i in range(len(nums))]
+        res = []
+        path = []
+        visited = [False for i in range(len(nums))]
 
-        self.backtrack([], nums, check)
-        return self.res
-
-    def backtrack(self, sol, nums, check):
-        if len(sol) == len(nums):
-            self.res.append(sol)
-            return
-
-        for i in range(len(nums)):
-            if check[i] == 1:
-                continue
-            if i > 0 and nums[i] == nums[i - 1] and check[i - 1] == 0:
-                continue
-            check[i] = 1
-            self.backtrack(sol + [nums[i]], nums, check)
-            check[i] = 0
+        backtrack(0)
+        return res

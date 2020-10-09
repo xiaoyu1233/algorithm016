@@ -5,13 +5,12 @@ class Solution:
             if N == 0:
                 return 1.0
             y = quickMul(N // 2)
-            return y * y if N % 2 == 0 else y * y * x
-
+            ans = y * y if N % 2 == 0 else y * y * x
+            return ans
         return quickMul(n) if n >= 0 else 1.0 / quickMul(-n)
 
-
-
 #迭代
+#迭代法容易越界，因为多了一次不必要的计算。
 class Solution:
     def myPow(self, x: float, n: int) -> float:
         def quickMul(N):

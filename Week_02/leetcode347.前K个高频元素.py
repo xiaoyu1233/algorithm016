@@ -63,7 +63,7 @@ class Solution:
                 l = pivot + 1
 #切分
     def partition(self, val, l, r, counter):
-        #随机找一个值，防止pivot值固定，导致切分的两边差距太大pivot，并把pivot值换到最右边
+        #随机找一个值，防止pivot值固定，导致切分的两边差距太大。找到pivot，并把pivot值换到最右边
         ran = random.randint(l, r)
         val[ran], val[r] = val[r], val[ran]
 

@@ -1,18 +1,26 @@
-#贪心
-
-#从当前点进行一次跳跃，然后将end的边界拉到本次跳跃最远的边界，遍历这个区间内第二次跳跃能到达的最远点，
-#当这个区间遍历结束后，更新最远点，将end拉到这个最远点。跳跃次数+1。
-#最后一个点不用跳，直接到达就行
-#所以遍历到n - 1就行
-
+#二分
 class Solution:
-    def canJump(self, nums: List[int]) -> bool:
-        n, rightmost = len(nums), 0
-        for i in range(n):
-            if i <= rightmost:
-                rightmost = max(rightmost, i + nums[i])
-                if rightmost >= n - 1:
-                    return True
-        return False
+    def search(self, nums: List[int], target: int) -> int:
+        if not nums:
+            return -1
+        left = 0
+        right = len(nums) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if nums[mid] == target:
+                return mid
 
-#
+            # 左半段有序
+            if nums[mid] >= nums[left]:
+                if nums[left] <= target <= nums[mid]:
+                    right = mid - 1
+                else:
+                    left = mid + 1
+            # 右半段有序
+            else:
+                if nums[mid] <= target <= nums[right]:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+        return -1
+

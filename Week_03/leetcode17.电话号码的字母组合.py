@@ -2,9 +2,7 @@
 
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        if not digits:
-            return list()
-
+        if not digits: return list()
         phoneMap = {
             "2": "abc",
             "3": "def",
@@ -13,20 +11,19 @@ class Solution:
             "6": "mno",
             "7": "pqrs",
             "8": "tuv",
-            "9": "wxyz",
+            "9": "wxyz"
         }
 
-        def backtrack(index: int):
+        def backtrack(index):
             if index == len(digits):
-                combinations.append("".join(combination))
+                res.append("".join(res_temp))
             else:
                 digit = digits[index]
                 for letter in phoneMap[digit]:
-                    combination.append(letter)
+                    res_temp.append(letter)
                     backtrack(index + 1)
-                    combination.pop()
-
-        combination = list()
-        combinations = list()
+                    res_temp.pop()
+        res = []
+        res_temp = []
         backtrack(0)
-        return combinations
+        return res
