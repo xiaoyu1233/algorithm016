@@ -1,14 +1,15 @@
 #用第一次的钱抵消一部分第二次买的钱
-def maxProfit(self, prices: List[int]) -> int:
-    buy_1 = buy_2 = float('inf')  # 第一二次买之前的最低价
-    pro_1 = pro_2 = 0
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        buy1 = buy2 = float('inf')  # 第一二次买之前的最低价
+        pro1 = pro2 = 0
 
-    for p in prices:
-        buy_1 = min(buy_1, p)
-        pro_1 = max(pro_1, p - buy_1)
-        buy_2 = min(buy_2, p - pro_1)  # p - pro_1 是用第一次的钱抵消了一部分第二次买的钱
-        pro_2 = max(pro_2, p - buy_2)
-    return pro_2
+        for price in prices:
+            buy1 = min(buy1, price)
+            pro1 = max(pro1, price - buy1)
+            buy2 = min(buy2, price - pro1)  # 第一次赚的钱用来补贴第二次
+            pro2 = max(pro2, price - buy2)
+        return pro2
 
 #顺逆两次遍历
 class Solution:

@@ -1,32 +1,30 @@
 #动态规划
 class Solution:
-    def minimumTotal(self, triangle: List[List[int]]) -> int:
-        n = len(triangle)
-        f = [[0] * n for _ in range(n)]
-        f[0][0] = triangle[0][0]
-
-        for i in range(1, n):
-            f[i][0] = f[i - 1][0] + triangle[i][0]
+    def minimumTotal(self, triangle: List[List[int]]) -> int: 
+        r = len(triangle)
+        dp = [[0] * r for _ in range(r)]
+        dp[0][0] = triangle[0][0]
+        for i in range(1, r):
+            dp[i][0] = dp[i - 1][0] + triangle[i][0]
             for j in range(1, i):
-                f[i][j] = min(f[i - 1][j - 1], f[i - 1][j]) + triangle[i][j]
-            f[i][i] = f[i - 1][i - 1] + triangle[i][i]
+                dp[i][j] = min(dp[i - 1][j - 1], dp[i - 1][j]) + triangle[i][j]
+            dp[i][i] = dp[i - 1][i - 1] + triangle[i][i]
+        return min(dp[-1])
 
-        return min(f[n - 1])
 
 #动态规划+空间优化
 class Solution:
-    def minimumTotal(self, triangle: List[List[int]]) -> int:
-        n = len(triangle)
-        f = [0] * n
-        f[0] = triangle[0][0]
-
-        for i in range(1, n):
-            f[i] = f[i - 1] + triangle[i][i]
+    def minimumTotal(self, triangle: List[List[int]]) -> int: 
+        r = len(triangle)
+        dp = [0] * r
+        dp[0] = triangle[0][0]
+        for i in range(1, r):
+            dp[i] = dp[i - 1] + triangle[i][i]
             for j in range(i - 1, 0, -1):
-                f[j] = min(f[j - 1], f[j]) + triangle[i][j]
-            f[0] += triangle[i][0]
+                dp[j] = min(dp[j], dp[j -1]) + triangle[i][j]
+            dp[0] += triangle[i][0]
+        return min(dp)
 
-        return min(f)
 
 
 #高赞回答

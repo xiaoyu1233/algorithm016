@@ -1,7 +1,7 @@
 #二维DP
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
-        if not 
+        if not grid: return 0
         r, c = len(grid), len(grid[0])
         dp = [[0] * c for _ in range(r)]
         dp[0][0] = grid[0][0]

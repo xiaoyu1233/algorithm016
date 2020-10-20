@@ -15,7 +15,7 @@ class Solution:
         for i in range(2, size):
             dp[i] = max(dp[i - 2] + nums[i], dp[i - 1])
 
-        return dp[size - 1]
+        return dp[-1]
 
 
 #用滚动数组优化空间

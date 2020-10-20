@@ -7,3 +7,4 @@ class Solution:
             maxprofit = max(price - minprice, maxprofit)
             minprice = min(price, minprice)
         return maxprofit
+
