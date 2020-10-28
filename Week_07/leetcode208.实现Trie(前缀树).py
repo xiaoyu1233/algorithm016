@@ -4,44 +4,46 @@ class Trie:
         """
         Initialize your data structure here.
         """
-        self.lookup = {}
+        self.root = {}
+        self.end_of_word = "#"
 
     def insert(self, word: str) -> None:
         """
         Inserts a word into the trie.
         """
-        tree = self.lookup
-        for a in word:
-            if a not in tree:
-                tree[a] = {}
-            tree = tree[a]
-        # 单词结束标志
-        tree["#"] = "#"
+        node = self.root
+        for ch in word:
+            node = node.setdefault(ch, {})
+        node[self.end_of_word] = self.end_of_word
+
 
     def search(self, word: str) -> bool:
         """
         Returns if the word is in the trie.
         """
-        tree = self.lookup
-        for a in word:
-            if a not in tree:
+        node = self.root
+        for ch in word:
+            if ch not in node:
                 return False
-            tree = tree[a]
-        if "#" in tree:
-            return True
-        return False
+            node = node[ch]
+        return self.end_of_word in node
+
 
     def startsWith(self, prefix: str) -> bool:
         """
         Returns if there is any word in the trie that starts with the given prefix.
         """
-        tree = self.lookup
-        for a in prefix:
-            if a not in tree:
+        node = self.root
+        for ch in prefix:
+            if ch not in node:
                 return False
-            tree = tree[a]
+            node = node[ch]
         return True
 
 
 
-#链接：https: // leetcode - cn.com / problems / implement - trie - prefix - tree / solution / pythonjian - dan - shi - xian - by - powcai /
+# Your Trie object will be instantiated and called as such:
+# obj = Trie()
+# obj.insert(word)
+# param_2 = obj.search(word)
+# param_3 = obj.startsWith(prefix)
