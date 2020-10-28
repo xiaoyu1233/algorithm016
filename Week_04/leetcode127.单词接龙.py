@@ -11,6 +11,7 @@ class Solution(object):
         :rtype: int
         """
 
+        bank = set(wordList)
         valid_choices_list = ''
         for word in wordList:
             for ch in word:
@@ -19,7 +20,6 @@ class Solution(object):
                 if ch not in valid_choices_list:
                     valid_choices_list += ch
 
-        bank = set(wordList)
 
         queue = collections.deque([beginWord])
 

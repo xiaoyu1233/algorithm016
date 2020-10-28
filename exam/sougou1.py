@@ -14,7 +14,6 @@ class Solution:
             start = count
             end = k + (n-count)
 
-
         return Interval(start, end)
 a = Interval()
 a.start = 0

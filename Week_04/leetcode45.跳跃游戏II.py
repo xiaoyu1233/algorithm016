@@ -6,13 +6,13 @@
 #所以遍历到n - 1就行
 
 class Solution:
-    def canJump(self, nums: List[int]) -> bool:
-        n, rightmost = len(nums), 0
-        for i in range(n):
-            if i <= rightmost:
-                rightmost = max(rightmost, i + nums[i])
-                if rightmost >= n - 1:
-                    return True
-        return False
-
-#
+    def jump(self, nums: List[int]) -> int:
+        n = len(nums)
+        maxPos, end, step = 0, 0, 0
+        for i in range(n - 1):
+            if i <= maxPos:
+                maxPos = max(maxPos, i + nums[i])
+                if i == end:
+                    end = maxPos
+                    step += 1
+        return step
